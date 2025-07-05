@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+    background-size: 600% 600%;
+    animation: berubahWarna 20s ease infinite;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    &.fade-out {
+        opacity: 0;
+        transform: scale(1.35);
+        filter: brightness(45%) contrast(130%) saturate(120%);
+        transition: opacity 0.9s ease, transform 0.9s ease, filter 0.9s ease;
+
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.85) 100%);
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.9s ease;
+    }
+}
+
+#bg-cube {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: clamp(320px, 100vw, 1920px);
+    height: clamp(240px, 100vh, 1080px);
+}
+
+#Content {
+    height: 100vh;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-weight: bold;
+    color: white;
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.typed {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: white;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    height: 2em;
+}
+
+#Cursor {
+    animation: blink 0.9s infinite;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+#Btn {
+    margin-top: 4rem;
+    padding: clamp(0.6rem, 1.8vw, 0.85rem) clamp(1.2rem, 4vw, 1.8rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    letter-spacing: 0.5px;
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.15),
+        0 0 20px rgba(14, 165, 233, 0.2),
+        0 0 30px rgba(14, 165, 233, 0.15);
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #0ea5e9;
+    color: white;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.6) 50%,
+                rgba(255, 255, 255, 0.1) 100%);
+        transform: skewX(-30deg);
+        animation: shine 1s linear infinite;
+        z-index: 0;
+    }
+
+    &:active {
+        transform: scale(1.08);
+        box-shadow: 0 0 30px rgba(14, 165, 233, 0.5);
+    }
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.875rem;
+    color: white;
+    opacity: 0.9;
+    z-index: 10;
+    position: relative;
+
+    strong {
+        color: #22d3ee;
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+    }
+
+    100% {
+        left: 125%;
+    }
+}
+
+@keyframes berubahWarna {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+
+    html,
+    body {
+        font-size: clamp(12px, 1.2vw, 16px);
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    #exploreBtn {
+        padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 3vw, 1.6rem);
+        font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+    }
+
+    .typed {
+        font-size: clamp(0.9rem, 2vw, 1.4rem);
+    }
+
+    h1 {
+        font-size: clamp(1.8rem, 4vw, 3.2rem);
+    }
+
+    #Content {
+        padding: 0 2rem;
+    }
+
+    #canvas {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+/* Light Mode Auto Detection */
+@media (prefers-color-scheme: light) {
+    body {
+        color: black;
+        background: linear-gradient(135deg, #f0f4f8, #cbd5e1, #f0f4f8);
+    }
+
+    h1,
+    .typed,
+    footer,
+    #Btn {
+        color: black;
+        text-shadow: none;
+    }
+
+    #Btn {
+        background-color: #0284c7;
+        box-shadow:
+            0 0 10px rgba(0, 0, 0, 0.1),
+            0 0 20px rgba(14, 165, 233, 0.1),
+            0 0 30px rgba(14, 165, 233, 0.05);
+    }
+
+    footer strong {
+        color: #0284c7;
+        text-shadow: none;
+    }
+
+    body::before {
+        background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.85) 100%);
+    }
+}
