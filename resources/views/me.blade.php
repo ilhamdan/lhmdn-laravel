@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ $lhmdweb ?? 'Lhmd Web' }}</title>
+    <title>{{ $ilhmdsite ?? 'ilhmdsite' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" href="{{ asset('favicon-light.png') }}" media="(prefers-color-scheme: light)">
