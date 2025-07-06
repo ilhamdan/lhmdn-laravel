@@ -6,11 +6,11 @@ import Typed from 'typed.js';
 
 const scene = new THREE.Scene();
 
-// Camera
+
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
 camera.position.z = 3;
 
-// Renderer
+
 const renderer = new THREE.WebGLRenderer({
     canvas: document.getElementById("bg-cube"),
     alpha: true,
@@ -19,19 +19,19 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 
-// Lighting
+
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
 directionalLight.position.set(0, 0, 3);
 scene.add(directionalLight);
 
-// Cube
+
 const cube = new THREE.Mesh(
     new THREE.BoxGeometry(),
     new THREE.MeshStandardMaterial({
-        color: 0x00ffff,         // Cerah cyan kehijauan
-        metalness: 0.1,          // Tidak terlalu mengkilap
-        roughness: 0.2,          // Agak halus
-        emissive: 0x004444,      // Cyan kehijauan gelap (dalam)
+        color: 0x00ffff,
+        metalness: 0.1,
+        roughness: 0.2,
+        emissive: 0x004444,
         emissiveIntensity: 0.5
     })
 );
