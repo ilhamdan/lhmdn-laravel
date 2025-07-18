@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('pages.me', ['ilhmdsite' => 'ilhmdsite']);
+    return view('/me', ['ilhmdsite' => 'ilhmdsite']);
 });
-Route::get('/home', function () {
-    return view('pages.home');
+Route::get('/', function () {
+    return view('/home', ['ilhmdsite' => 'ilhmdsite']);
 });
